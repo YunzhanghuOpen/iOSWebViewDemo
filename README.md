@@ -20,7 +20,7 @@
 2. @param webView `网页视图`
 
 
-+ ######  NavigationBarShouldPopItemProtocol
++ NavigationBarShouldPopItemProtocol
 + @Descriptio `是否允许 UINavigationController pop ViewController 的事件处理协议`
 
 #### - HTInvestWebViewController 
