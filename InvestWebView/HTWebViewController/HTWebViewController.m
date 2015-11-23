@@ -7,7 +7,7 @@
 //
 
 #import "HTWebViewController.h"
-
+#import "WebViewConfig.h"
 
 
 #pragma mark -
@@ -21,6 +21,32 @@ UIColor * ht_hexColor(uint color)
     
     return [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f];
 }
+
+
+@interface UIViewController () <NavigationBarShouldPopItemProtocol>
+
+@end
+
+@implementation UINavigationController (PopItem)
+
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
+{
+    
+    BOOL shouldPop = YES;
+    
+    UIViewController *topVc = [self topViewController];
+    if (topVc && [topVc respondsToSelector:@selector(navigationBarShouldPopItem)]){
+        shouldPop = [topVc navigationBarShouldPopItem];
+    }
+    
+    if (shouldPop) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    return shouldPop;
+}
+
+@end
 
 
 #pragma mark -
@@ -113,6 +139,12 @@ UIColor * ht_hexColor(uint color)
 
 @end
 
+
+@interface HTWebView : UIWebView
+
+@property (nonatomic, assign) id <HTWebViewDelegate> progressDelegate;
+
+@end
 
 @implementation HTWebView
 

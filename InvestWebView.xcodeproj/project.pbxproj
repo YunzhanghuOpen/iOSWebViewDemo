@@ -30,6 +30,7 @@
 		9237DBA71C030F8900C79DE0 /* HTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWebViewController.m; sourceTree = "<group>"; };
 		9237DBA91C030FD300C79DE0 /* HTInvestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTInvestWebViewController.h; sourceTree = "<group>"; };
 		9237DBAA1C030FD300C79DE0 /* HTInvestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTInvestWebViewController.m; sourceTree = "<group>"; };
+		9237DBAC1C033DE600C79DE0 /* WebViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 		9237DB8D1C030E9700C79DE0 /* InvestWebView */ = {
 			isa = PBXGroup;
 			children = (
+				9237DBAC1C033DE600C79DE0 /* WebViewConfig.h */,
 				9237DBA51C030F8900C79DE0 /* HTWebViewController */,
 				9237DB911C030E9700C79DE0 /* AppDelegate.h */,
 				9237DB921C030E9700C79DE0 /* AppDelegate.m */,
@@ -310,6 +312,7 @@
 				9237DBA41C030E9700C79DE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

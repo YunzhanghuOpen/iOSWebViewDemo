@@ -8,28 +8,37 @@
 
 #import <UIKit/UIKit.h>
 
-//  进度条颜色
-static uint defaultColor_progressViewColor = 0xf76425;
-//  webView背景色 
-static uint defaultColor_webViewBackGroudColor = 0xeeeeee;
 
+/**
+ *  返回按钮事件处理协议
+ *
+ *  @Description: 如需控制NavigationController是否允许pop ViewController 只需在Controller里遵守此协议
+ */
 
-@class HTWebProgressView;
-@protocol HTWebViewDelegate;
+@protocol NavigationBarShouldPopItemProtocol <NSObject>
 
-@interface HTWebView :UIWebView
-
-@property (nonatomic, assign) id <HTWebViewDelegate> progressDelegate;
+/**
+ *  是否允许NavigationController pop ViewController
+ *
+ *  @return @YES 允许 @NO 不允许
+ */
+- (BOOL)navigationBarShouldPopItem;
 
 @end
 
 
+@class HTWebView;
+
 @interface HTWebViewController : UIViewController
 
-@property (nonatomic, strong)   NSURL *url;
-@property (nonatomic, strong, readonly) HTWebView *webView;
+/**
+ *  请求的URL链接
+ */
+@property (nonatomic, strong)               NSURL *url;
+@property (nonatomic, strong, readonly)     HTWebView *webView;
 
 
+//  在Header里添加要传的参数
 - (void)setHeaderObject:(id)anObject forKey:(id)aKey;
 
 @end

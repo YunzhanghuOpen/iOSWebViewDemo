@@ -7,33 +7,8 @@
 //
 
 #import "HTInvestWebViewController.h"
+#import "WebViewConfig.h"
 
-@protocol NavigationBarShouldPopItemProtocol <NSObject>
-
-- (BOOL)navigationBarShouldPopItem;
-
-@end
-
-@interface UIViewController () <NavigationBarShouldPopItemProtocol>
-
-@end
-
-@implementation UINavigationController (PopItem)
-
-- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
-{
-    
-    BOOL shouldPop = YES;
-    
-    UIViewController *topVc = [self topViewController];
-    if (topVc && [topVc respondsToSelector:@selector(navigationBarShouldPopItem)]){
-        shouldPop = [topVc navigationBarShouldPopItem];
-    }
-    
-    return shouldPop;
-}
-
-@end
 
 @implementation HTInvestWebViewController
 
