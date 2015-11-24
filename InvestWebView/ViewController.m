@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HTInvestWebViewController.h"
+#import "WebViewConfig.h"
 
 @interface ViewController ()
 
@@ -50,7 +51,7 @@
 
 - (NSString *)title
 {
-    return @"投资";
+    return defaultString_investTitle;
 }
 
 @end

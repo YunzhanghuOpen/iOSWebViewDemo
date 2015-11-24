@@ -13,16 +13,6 @@
 #pragma mark -
 #pragma mark ExtensionMethod
 
-UIColor * ht_hexColor(uint color)
-{
-    float r = (color&0xFF0000) >> 16;
-    float g = (color&0xFF00) >> 8;
-    float b = (color&0xFF);
-    
-    return [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f];
-}
-
-
 @interface UIViewController () <NavigationBarShouldPopItemProtocol>
 
 @end
@@ -40,7 +30,7 @@ UIColor * ht_hexColor(uint color)
     }
     
     if (shouldPop) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self popViewControllerAnimated:YES];
     }
     
     return shouldPop;
@@ -140,7 +130,9 @@ UIColor * ht_hexColor(uint color)
 @end
 
 
-@interface HTWebView : UIWebView
+
+
+@interface HTWebView ()
 
 @property (nonatomic, assign) id <HTWebViewDelegate> progressDelegate;
 
@@ -216,6 +208,7 @@ UIColor * ht_hexColor(uint color)
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
+    
 }
 
 - (void)setUrl:(NSURL *)url
@@ -267,9 +260,8 @@ UIColor * ht_hexColor(uint color)
         _webView.scalesPageToFit = NO;
         
     }else {
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-        NSMutableURLRequest *urlRequest = [request mutableCopy];
-        urlRequest.allHTTPHeaderFields = [self addRequestHeader:urlRequest.allHTTPHeaderFields];
+        NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:60];
+//        urlRequest.allHTTPHeaderFields = [self addRequestHeader:urlRequest.allHTTPHeaderFields];
         [_webView loadRequest:urlRequest];
     }
 }
@@ -309,14 +301,6 @@ UIColor * ht_hexColor(uint color)
     if (persent >= 1.0f) {
         _progressView.hidden = YES;
     }
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    _progressView.hidden = NO;
-    _loadError = NO;
-    
-    return YES;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

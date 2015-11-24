@@ -8,6 +8,7 @@
 
 #import "HTInvestWebViewController.h"
 #import "WebViewConfig.h"
+#import "HTWebViewController.h"
 
 
 @implementation HTInvestWebViewController
@@ -19,8 +20,6 @@
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     
     [self addCloseBarbutton];
-    
-    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@""]];
 }
 
 - (void)addCloseBarbutton
@@ -28,7 +27,8 @@
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     closeButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     [closeButton setTitle:@"关闭" forState:UIControlStateNormal];
-    [closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [closeButton setTitleColor:ht_hexColor(defaultColor_closeButtonColor) forState:UIControlStateNormal];
+    [closeButton setTitleColor:ht_hexColor(defaultColor_closeButtonHighLightColor) forState:UIControlStateHighlighted];
     [closeButton sizeToFit];
     [closeButton addTarget:self action:@selector(closeButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
@@ -56,21 +56,28 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    /*
+    NSString *investTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
-    self.title = theTitle;
+    self.title = investTitle;
+    */
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSLog(@"URL:%@", request.URL);
     
+    /*
     NSString *requestURL = [request.URL absoluteString];
     NSString *relativePath = [request.URL relativePath];
-    
+    */
     
     return YES;
 }
 
+- (NSString *)title
+{
+    return defaultString_investTitle;
+}
 
 @end

@@ -5,12 +5,18 @@
 
 ## Instruction
 
+1. 直接使用，通过修改WebViewConfig来配置需求
+
+2. 自定义，直接继承HTWebViewController 参考HTInvestWebViewController
+
 #### - WebViewConfig
 - @Description `配置系统色调，相关字体的颜色`
 
- * 进度条颜色 `defaultColor_progressViewColor`
+ -  进度条颜色		`defaultColor_progressViewColor`
 
- *	webView背景色 `defaultColor_webViewBackGroudColor`
+ -	webView背景色 	`defaultColor_webViewBackGroudColor`
+ 
+ -  理财应用标题 		`defaultString_investTitle`
 
 #### - HTWebViewController
 - @Description `加载网页， 添加消息头参，显示加载进度，加载视图，加载错误视图`
@@ -23,7 +29,7 @@
 + @Descriptio `是否允许 UINavigationController pop ViewController 的事件处理协议`
 
 #### - HTInvestWebViewController 
-- *@Description `继承自HTWebViewController ，控制网页返回， 显示关闭按钮`
+- @Description `继承自HTWebViewController ，控制网页返回， 显示关闭按钮`
 
 
 ****

@@ -27,7 +27,12 @@
 @end
 
 
-@class HTWebView;
+
+@interface HTWebView : UIWebView
+
+
+@end
+
 
 @interface HTWebViewController : UIViewController
 
