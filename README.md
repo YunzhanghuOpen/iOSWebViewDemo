@@ -18,6 +18,19 @@
  
  -  理财应用标题 		`defaultString_investTitle`
 
+```
+//	回调函数返回参数
+typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
+    //  认证返回
+    InvestCallBackMethodAuth         = 0,
+    //  绑定银行卡返回
+    InvestCallBackMethodBindBankCard = 1,
+    //  未知情况
+    InvestCallBackMethodUnknown      = -1
+};
+
+```
+
 #### - HTWebViewController
 - @Description `加载网页， 添加消息头参，显示加载进度，加载视图，加载错误视图`
 

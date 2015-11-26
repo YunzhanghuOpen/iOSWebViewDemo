@@ -41,14 +41,30 @@ static uint defaultColor_closeButtonHighLightColor = 0xea5414;
 static NSString *defaultString_investTitle = @"云账户";
 
 
+
+/*-------------------------------------------------*/
+//             如无必要，以下设置切勿修改
+/*-------------------------------------------------*/
+
 #pragma mark - 
 #pragma mark ExtensionMethod
+
+//  hook URl Scheme
+static NSString *ht_urlHookStr      = @"yunzhanghu.com/app";
+
+//  认证成功后返回
+static NSString *ht_authAction         =   @"returnAuth";
+static NSString *ht_bindBankCardAction =   @"returnBankcard";
+static NSString *ht_investAction       =   @"returnInvest";
+
 
 typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
     //  认证返回
     InvestCallBackMethodAuth         = 0,
     //  绑定银行卡返回
     InvestCallBackMethodBindBankCard = 1,
+    //  投资
+    InvestCallBackMethodInvest       = 2,
     //  未知情况
     InvestCallBackMethodUnknown      = -1
 };
@@ -63,5 +79,6 @@ static inline UIColor * ht_hexColor(uint color)
     
     return [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f];
 }
+
 
 #endif /* WebViewConfig_h */

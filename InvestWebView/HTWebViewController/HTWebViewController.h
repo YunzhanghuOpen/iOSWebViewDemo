@@ -42,8 +42,24 @@
 @property (nonatomic, strong)               NSURL *url;
 @property (nonatomic, strong, readonly)     HTWebView *webView;
 
+/**
+ *  需要监听的Host地址
+ */
+@property (nonatomic, copy)                 NSString *hookString;
 
-//  在Header里添加要传的参数
+/**
+ *  AjaxRequest Callback
+ *  服务器关于客户端的回调函数,需要子类重写,用来监听父类回调
+ *  @param request
+ */
+- (void)userActionCallBackWithRequest:(NSURLRequest *)request;
+
+/**
+ *  在Header里添加要传的参数
+ *
+ *  @param anObject value
+ *  @param aKey     key
+ */
 - (void)setHeaderObject:(id)anObject forKey:(id)aKey;
 
 @end
