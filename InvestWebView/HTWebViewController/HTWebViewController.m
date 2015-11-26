@@ -241,11 +241,22 @@ static id <HTURLHookProtocol> hookDelegate = nil;
         
         if (hookDelegate && [hookDelegate respondsToSelector:@selector(ht_urlHookWithRequest:)]) {
             [hookDelegate ht_urlHookWithRequest:request];
-            return NO;
         }
+        
+        return NO;
     }
     
     return YES;
+}
+
+- (id)initWithRequest:(NSURLRequest *)request cachedResponse:(NSCachedURLResponse *)cachedResponse client:(id<NSURLProtocolClient>)client {
+    if (self = [super initWithRequest:request cachedResponse:cachedResponse client:client]) {
+        // TODO How to handle cachedResponse?
+        
+        
+    }
+    
+    return self;
 }
 
 - (void)startLoading

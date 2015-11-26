@@ -15,8 +15,6 @@
 		9237DBA81C030F8900C79DE0 /* HTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9237DBA71C030F8900C79DE0 /* HTWebViewController.m */; };
 		9237DBAB1C030FD300C79DE0 /* HTInvestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9237DBAA1C030FD300C79DE0 /* HTInvestWebViewController.m */; };
 		92CEF97B1C06F11400AD9D83 /* 123.html in Resources */ = {isa = PBXBuildFile; fileRef = 92CEF97A1C06F11400AD9D83 /* 123.html */; };
-		92CEF97F1C06FC7900AD9D83 /* HTURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CEF97E1C06FC7900AD9D83 /* HTURLProtocol.m */; };
-		92CEF9821C07035900AD9D83 /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CEF9811C07035900AD9D83 /* WebViewProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +33,6 @@
 		9237DBAA1C030FD300C79DE0 /* HTInvestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTInvestWebViewController.m; sourceTree = "<group>"; };
 		9237DBAC1C033DE600C79DE0 /* WebViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewConfig.h; sourceTree = "<group>"; };
 		92CEF97A1C06F11400AD9D83 /* 123.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 123.html; sourceTree = "<group>"; };
-		92CEF97D1C06FC7900AD9D83 /* HTURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTURLProtocol.h; sourceTree = "<group>"; };
-		92CEF97E1C06FC7900AD9D83 /* HTURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTURLProtocol.m; sourceTree = "<group>"; };
-		92CEF9801C07035900AD9D83 /* WebViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewProxy.h; sourceTree = "<group>"; };
-		92CEF9811C07035900AD9D83 /* WebViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +49,6 @@
 		9237DB821C030E9700C79DE0 = {
 			isa = PBXGroup;
 			children = (
-				92CEF97D1C06FC7900AD9D83 /* HTURLProtocol.h */,
-				92CEF97E1C06FC7900AD9D83 /* HTURLProtocol.m */,
-				92CEF9801C07035900AD9D83 /* WebViewProxy.h */,
-				92CEF9811C07035900AD9D83 /* WebViewProxy.m */,
 				92CEF97A1C06F11400AD9D83 /* 123.html */,
 				9237DB8D1C030E9700C79DE0 /* InvestWebView */,
 				9237DB8C1C030E9700C79DE0 /* Products */,
@@ -180,11 +170,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92CEF9821C07035900AD9D83 /* WebViewProxy.m in Sources */,
 				9237DBAB1C030FD300C79DE0 /* HTInvestWebViewController.m in Sources */,
 				9237DB961C030E9700C79DE0 /* ViewController.m in Sources */,
 				9237DBA81C030F8900C79DE0 /* HTWebViewController.m in Sources */,
-				92CEF97F1C06FC7900AD9D83 /* HTURLProtocol.m in Sources */,
 				9237DB931C030E9700C79DE0 /* AppDelegate.m in Sources */,
 				9237DB901C030E9700C79DE0 /* main.m in Sources */,
 			);

@@ -9,7 +9,6 @@
 #import "HTInvestWebViewController.h"
 #import "WebViewConfig.h"
 #import "HTWebViewController.h"
-#import "WebViewProxy.h"
 
 
 
