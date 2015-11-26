@@ -243,20 +243,10 @@ static id <HTURLHookProtocol> hookDelegate = nil;
             [hookDelegate ht_urlHookWithRequest:request];
         }
         
-        return NO;
+        return YES;
     }
     
-    return YES;
-}
-
-- (id)initWithRequest:(NSURLRequest *)request cachedResponse:(NSCachedURLResponse *)cachedResponse client:(id<NSURLProtocolClient>)client {
-    if (self = [super initWithRequest:request cachedResponse:cachedResponse client:client]) {
-        // TODO How to handle cachedResponse?
-        
-        
-    }
-    
-    return self;
+    return NO;
 }
 
 - (void)startLoading
@@ -329,12 +319,10 @@ static id <HTURLHookProtocol> hookDelegate = nil;
 
 - (void)setUrl:(NSURL *)url
 {
-    
     if (![_url.absoluteString isEqualToString:url.absoluteString]) {
         _url = url;
         [self refresh:url];
     }
-
 }
 
 - (void)loadListRequest

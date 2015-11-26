@@ -55,8 +55,8 @@
     [super viewDidLoad];
     
     [self addCloseBarbutton];
-    
-    [self setHookString:ht_urlHookStr];
+ 
+    self.hookString = ht_urlHookStr;
 }
 
 - (void)addCloseBarbutton

@@ -56,13 +56,15 @@
         
     }];
     
-//    invest.url = [NSURL URLWithString:@"https://test.yunzhanghu.com/#/app/logout"];
+    invest.url = [NSURL URLWithString:@"https://test.yunzhanghu.com/#/app/logout"];
+    
     invest.url = [NSURL URLWithString:@"http://10.10.1.116:8000"];
     invest.url = nil;
     
     NSString *file = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"html"];
     NSString *fileStr = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
     [invest.webView loadHTMLString:fileStr baseURL:[NSURL fileURLWithPath:file]];
+
     
     [self.navigationController pushViewController:invest animated:YES];
 }
