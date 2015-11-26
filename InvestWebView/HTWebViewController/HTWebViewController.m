@@ -21,7 +21,6 @@
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
 {
-    
     BOOL shouldPop = YES;
     
     UIViewController *topVc = [self topViewController];
@@ -189,9 +188,15 @@
 #pragma mark -
 #pragma mark HTWebViewController
 
-@interface HTWebViewController () <HTWebViewDelegate, UIWebViewDelegate>
+@interface HTWebViewController () <HTWebViewDelegate>
 {
     BOOL _loadError;
+    
+    /*--------监控对方的设置状态------------*/
+    
+    BOOL _isInteractivePopGestureRecognizerEnable;
+    
+    /*-------- End-----------------------*/
 }
 
 @property (nonatomic, assign)   BOOL loadData;
@@ -203,11 +208,37 @@
 
 @implementation HTWebViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //  禁用手势
+    UIGestureRecognizer *interactivePopGesture = self.navigationController.interactivePopGestureRecognizer;
+    
+    _isInteractivePopGestureRecognizerEnable =  interactivePopGesture.isEnabled;
+    
+    if (interactivePopGesture) {
+        interactivePopGesture.enabled = NO;
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    //  恢复滑动返回手势
+    if (_isInteractivePopGestureRecognizerEnable) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = _isInteractivePopGestureRecognizerEnable;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = NO;
+    /**
+     *  NavigationBar 处理操作
+     */
     
 }
 
@@ -260,8 +291,8 @@
         _webView.scalesPageToFit = NO;
         
     }else {
-        NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:60];
-//        urlRequest.allHTTPHeaderFields = [self addRequestHeader:urlRequest.allHTTPHeaderFields];
+        NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60];
+        urlRequest.allHTTPHeaderFields = [self addRequestHeader:urlRequest.allHTTPHeaderFields];
         [_webView loadRequest:urlRequest];
     }
 }

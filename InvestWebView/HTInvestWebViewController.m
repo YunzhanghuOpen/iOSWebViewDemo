@@ -10,6 +10,14 @@
 #import "WebViewConfig.h"
 #import "HTWebViewController.h"
 
+//  认证成功后返回
+static NSString *authAction         =   @"returnAuth";
+static NSString *bindBankCardAction =   @"returnBankcard";
+
+@interface HTInvestWebViewController () <UIWebViewDelegate>
+
+@end
+
 
 @implementation HTInvestWebViewController
 
@@ -54,25 +62,60 @@
     return YES;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    /*
-    NSString *investTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    
-    self.title = investTitle;
-    */
-}
+#pragma mark - 
+#pragma mark webView Delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"URL:%@", request.URL);
-    
-    /*
     NSString *requestURL = [request.URL absoluteString];
-    NSString *relativePath = [request.URL relativePath];
-    */
+    NSString *scheme = request.URL.scheme;
+    
+    if ([scheme rangeOfString:@"YZH"].length > 0) {
+        NSDictionary *param = [self urlParamterFromRequestURL:requestURL];
+        
+        InvestCallBackMethod method = InvestCallBackMethodUnknown;
+        
+        if ([requestURL rangeOfString:authAction].length > 0) {
+            method = InvestCallBackMethodAuth;
+            
+        }else if ([requestURL rangeOfString:bindBankCardAction].length > 0) {
+            method = InvestCallBackMethodBindBankCard;
+        }
+        
+        if (_callBackBlock) {
+            _callBackBlock(method, param);
+        }
+        
+        return NO;
+    }
     
     return YES;
+}
+
+- (NSDictionary *)urlParamterFromRequestURL:(NSString *)urlStr
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    NSArray *array = [urlStr componentsSeparatedByString:@"?"];
+    
+    if (array.count > 1) {
+        NSString *urlParamStr = array[1];
+        array = [urlParamStr componentsSeparatedByString:@"&"];
+        
+        for (NSString *paramStr in array) {
+            NSArray *array = [paramStr componentsSeparatedByString:@"="];
+            
+            NSAssert(array.count == 2, @"解析param 出错~");
+            
+            if (array.count == 2) {
+                [dict setValue:array[1] forKey:array[0]];
+            }
+        }
+        
+        return dict;
+    }
+    
+    return nil;
 }
 
 - (NSString *)title

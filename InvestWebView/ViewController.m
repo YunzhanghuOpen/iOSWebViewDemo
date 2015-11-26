@@ -43,6 +43,15 @@
 - (void)invesetButtonClicked
 {
     HTInvestWebViewController *invest = [[HTInvestWebViewController alloc] init];
+    [invest setCallBackBlock:^(InvestCallBackMethod method, NSDictionary *param) {
+        
+        if (method == InvestCallBackMethodAuth) {
+            self.view.backgroundColor = [UIColor redColor];
+        }else {
+            self.view.backgroundColor = [UIColor blueColor];
+        }
+        
+    }];
     
     invest.url = [NSURL URLWithString:@"https://test.yunzhanghu.com/#/app/logout"];
     

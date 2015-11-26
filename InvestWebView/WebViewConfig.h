@@ -44,6 +44,17 @@ static NSString *defaultString_investTitle = @"云账户";
 #pragma mark - 
 #pragma mark ExtensionMethod
 
+typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
+    //  认证返回
+    InvestCallBackMethodAuth         = 0,
+    //  绑定银行卡返回
+    InvestCallBackMethodBindBankCard = 1,
+    //  未知情况
+    InvestCallBackMethodUnknown      = -1
+};
+
+typedef void(^InvestCallBackBlock)(InvestCallBackMethod, NSDictionary *);
+
 static inline UIColor * ht_hexColor(uint color)
 {
     float r = (color&0xFF0000) >> 16;

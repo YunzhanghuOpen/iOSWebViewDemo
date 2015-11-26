@@ -34,7 +34,7 @@
 @end
 
 
-@interface HTWebViewController : UIViewController
+@interface HTWebViewController : UIViewController <UIWebViewDelegate>
 
 /**
  *  请求的URL链接

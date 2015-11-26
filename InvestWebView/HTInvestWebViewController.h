@@ -7,9 +7,11 @@
 //
 
 #import "HTWebViewController.h"
+#import "WebViewConfig.h"
+
 
 @interface HTInvestWebViewController : HTWebViewController
 
-
+@property (nonatomic, copy) InvestCallBackBlock callBackBlock;
 
 @end
