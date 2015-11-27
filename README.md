@@ -1,43 +1,36 @@
-
 ![yun](https://www.yunzhanghu.com/img/logo.png)
 
-# iOSWebViewDemo
+# iOS 客户端接入云账户 Demo
 
-## Instruction
+## 文件清单
 
-1. 直接使用，通过修改WebViewConfig来配置需求
+商户需要使用 Demo 当中的文件：
 
-2. 自定义，直接继承HTWebViewController 参考HTInvestWebViewController
+1. CustomWebViewClient.java //同刚替换
+2. JSActivity.java //同刚替换
 
-#### - WebViewConfig
-- @Description `配置系统色调，相关字体的颜色`
+## 使用方法
 
- -  进度条颜色		`defaultColor_progressViewColor`
+### 介绍核心类
 
- -	webView背景色 	`defaultColor_webViewBackGroudColor`
- 
- -  理财应用标题 		`defaultString_investTitle`
+//同刚添加
 
-#### - HTWebViewController
-- @Description `加载网页， 添加消息头参，显示加载进度，加载视图，加载错误视图`
+### 讲解实现
 
-- @Param url `请求的url链接`
-- @param webView `网页视图`
+//同刚添加
 
+## 运行
 
-+ NavigationBarShouldPopItemProtocol
-+ @Descriptio `是否允许 UINavigationController pop ViewController 的事件处理协议`
+1. Run Project
+2. 点击页面上按钮
+3. 如果看到 `@returnAutn It's work!` 则表示工作正常
 
-#### - HTInvestWebViewController 
-- @Description `继承自HTWebViewController ，控制网页返回， 显示关闭按钮`
+## 加入自己的业务
 
+1. 根据商户的业务需求使用相应的组件，可查看《云账户商户接入指南.pdf》
+2. 在 `//edit me` 位置添加商户自己的业务代码
+3. 注意：经过云账户方声明的代码片段误删
 
-****
-
-> **Powered by [Mr.Yang](https://github.com/youran1024)**
-> >**Copy right @[云账户](https://www.yunzhanghu.com/)**
->
->
+> Powered by [Mr.Yang](https://github.com/youran1024)  Copy right @[云账户](https://www.yunzhanghu.com/)
 
 
-[^MrYang]: hi
