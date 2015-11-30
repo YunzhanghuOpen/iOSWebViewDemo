@@ -50,8 +50,6 @@ typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
 
 > **Powered by [Mr.Yang](https://github.com/youran1024)**
 > >**Copy right @[云账户](https://www.yunzhanghu.com/)**
->
->
 
 
 [^MrYang]: hi

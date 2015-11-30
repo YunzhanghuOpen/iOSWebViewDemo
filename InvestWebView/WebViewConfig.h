@@ -31,7 +31,7 @@ static uint defaultColor_webViewBackGroudColor = 0xeeeeee;
 static uint defaultColor_closeButtonColor = 0xfa640e;
 
 /**
- *  关闭按钮颜色
+ *  关闭按钮高亮颜色
  */
 static uint defaultColor_closeButtonHighLightColor = 0xea5414;
 
