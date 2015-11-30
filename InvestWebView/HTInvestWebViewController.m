@@ -98,16 +98,7 @@
     [self handleUserHttpRequest:request];
 }
 
-#pragma mark - 
-#pragma mark webView Delegate
-
-/*
-// 暂且搁置
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    return [self handleUserRequest:request];
-}
-*/
+#pragma mark -  解析URL
 - (void)handleUserHttpRequest:(NSURLRequest *)request
 {
     NSString *urlString = request.URL.description;
@@ -116,8 +107,6 @@
         NSString *userAction = array[0];
         NSArray *hostArray = [userAction componentsSeparatedByString:@"/"];
         userAction = [hostArray lastObject];
-        
-        NSDictionary *param = [self urlParamterFromRequestURL:urlString];
         
         InvestCallBackMethod method = InvestCallBackMethodUnknown;
         if ([userAction isEqualToString:ht_investAction]) {
@@ -128,11 +117,37 @@
             method = InvestCallBackMethodBindBankCard;
         }
         
+        NSDictionary *param = [self urlParamterFromRequestURL:urlString];
+        
+        NSInteger returnCode = [[param objectForKey:@"code"] integerValue];
+        
+        ReturnCode code;
+        if (returnCode == 0) {
+            code = ReturnCodeSuccess;
+        }else if (returnCode == 1) {
+            code = ReturnCodeError;
+        }else {
+            code = ReturnCodeMoreTimeError;
+        }
+        
+        NSString *returnMsg = [param objectForKey:@"msg"];
+        NSString *data = [param objectForKey:@"data"];
+        NSError *error = nil;
+        id obj = [NSJSONSerialization JSONObjectWithData:[data dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:&error];
+        
         if (_callBackBlock) {
-            _callBackBlock(method, param);
+            _callBackBlock(method, code, returnMsg, obj);
         }
     }
 }
+
+/*
+ // 暂且搁置
+ - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+ {
+ return [self handleUserRequest:request];
+ }
+ */
 
 /*
 //  暂且搁置

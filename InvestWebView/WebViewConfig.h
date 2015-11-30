@@ -43,21 +43,24 @@ static NSString *defaultString_investTitle = @"云账户";
 
 
 /*-------------------------------------------------*/
-//             如无必要，以下设置切勿修改
+//             以下设置切勿修改
 /*-------------------------------------------------*/
 
 #pragma mark - 
-#pragma mark ExtensionMethod
+#pragma mark Extension
 
-//  hook URl Scheme
+//  url劫持关键字
 static NSString *ht_urlHookStr      = @"yunzhanghu.com/app";
 
-//  认证成功后返回
+//  认证回调
 static NSString *ht_authAction         =   @"returnAuth";
+//  绑卡回调
 static NSString *ht_bindBankCardAction =   @"returnBankcard";
+//  投资回调
 static NSString *ht_investAction       =   @"returnInvest";
 
 
+//	回调方法枚举
 typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
     //  认证返回
     InvestCallBackMethodAuth         = 0,
@@ -69,7 +72,18 @@ typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
     InvestCallBackMethodUnknown      = -1
 };
 
-typedef void(^InvestCallBackBlock)(InvestCallBackMethod, NSDictionary *);
+//  返回的状态码枚举
+typedef NS_ENUM(NSInteger, ReturnCode) {
+    //  用户成功
+    ReturnCodeSuccess = 0,
+    //  填写错误
+    ReturnCodeError = 1,
+    //  多次填写错误
+    ReturnCodeMoreTimeError
+};
+
+//  客户端回调方法
+typedef void(^InvestCallBackBlock)(InvestCallBackMethod, ReturnCode, NSString*, id);
 
 static inline UIColor * ht_hexColor(uint color)
 {

@@ -46,7 +46,7 @@
 {
     HTInvestWebViewController *invest = [[HTInvestWebViewController alloc] init];
     
-    [invest setCallBackBlock:^(InvestCallBackMethod method, NSDictionary *param) {
+    [invest setCallBackBlock:^(InvestCallBackMethod method, ReturnCode code, NSString* returnMsg, id obj) {
         
         if (method == InvestCallBackMethodAuth) {
             self.view.backgroundColor = [UIColor redColor];

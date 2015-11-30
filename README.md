@@ -3,11 +3,15 @@
 
 # iOSWebViewDemo
 
-## Instruction
-
-1. 直接使用，通过修改WebViewConfig来配置需求
-
-2. 自定义，直接继承HTWebViewController 参考HTInvestWebViewController
+## 使用说明
+1. 将SDK引入工程
+2. Push `HTInvestWebViewController`之前，设置`HTInvestWebViewController`的各项参数
+	
+	2.1 设置要打开的url
+	
+	2.2 设置回调Block
+	
+3. 配置WebViewConfig里边的相关参数,统一页面样式
 
 #### - WebViewConfig
 - @Description `配置系统色调，相关字体的颜色`
@@ -19,7 +23,7 @@
  -  理财应用标题 		`defaultString_investTitle`
 
 ```
-//	回调函数返回参数
+//	回调方法枚举
 typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
     //  认证返回
     InvestCallBackMethodAuth         = 0,
@@ -27,6 +31,16 @@ typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
     InvestCallBackMethodBindBankCard = 1,
     //  未知情况
     InvestCallBackMethodUnknown      = -1
+};
+
+//  返回的状态码枚举
+typedef NS_ENUM(NSInteger, ReturnCode) {
+    //  用户成功
+    ReturnCodeSuccess = 0,
+    //  填写错误
+    ReturnCodeError = 1,
+    //  多次填写错误
+    ReturnCodeMoreTimeError
 };
 
 ```
@@ -38,20 +52,11 @@ typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
 
 - @param webView `网页视图`
 
-
-+ NavigationBarShouldPopItemProtocol
-+ @Descriptio `是否允许 UINavigationController pop ViewController 的事件处理协议`
-
 #### - HTInvestWebViewController 
 - @Description `继承自HTWebViewController ，控制网页返回， 显示关闭按钮`
 
-1
-1
 
-****
-
-> **Powered by [Mr.Yang](https://github.com/youran1024)**
-> >**Copy right @[云账户](https://www.yunzhanghu.com/)**
+> Powered by [Mr.Yang](https://github.com/youran1024) Copy right @**[云账户](https://www.yunzhanghu.com/)**
 
 
 [^MrYang]: hi
