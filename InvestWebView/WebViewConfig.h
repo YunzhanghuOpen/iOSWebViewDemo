@@ -49,41 +49,69 @@ static NSString *defaultString_investTitle = @"云账户";
 #pragma mark - 
 #pragma mark Extension
 
-//  url劫持关键字
+/*url劫持关键字*/
 static NSString *ht_urlHookStr      = @"yunzhanghu.com/app";
 
-//  认证回调
+/*认证回调*/
 static NSString *ht_authAction         =   @"returnAuth";
-//  绑卡回调
+
+/*绑卡回调*/
 static NSString *ht_bindBankCardAction =   @"returnBankcard";
-//  投资回调
+
+/*投资回调*/
 static NSString *ht_investAction       =   @"returnInvest";
 
 
-//	回调方法枚举
+/**
+ *  回调方法枚举
+ */
 typedef NS_ENUM(NSInteger, InvestCallBackMethod) {
-    //  认证返回
+    /**
+     *  认证返回
+     */
     InvestCallBackMethodAuth         = 0,
-    //  绑定银行卡返回
-    InvestCallBackMethodBindBankCard = 1,
-    //  投资
+    /**
+     *  绑定银行卡返回
+     */
+   InvestCallBackMethodBindBankCard = 1,
+    /**
+     *  投资
+     */
     InvestCallBackMethodInvest       = 2,
-    //  未知情况
+    /**
+     *  未知情况
+     */
     InvestCallBackMethodUnknown      = -1
 };
 
-//  返回的状态码枚举
+/**
+ *  返回的状态码枚举
+ */
 typedef NS_ENUM(NSInteger, ReturnCode) {
-    //  用户成功
-    ReturnCodeSuccess = 0,
-    //  填写错误
+    /**
+     *  用户成功
+     */
+     ReturnCodeSuccess = 0,
+    /**
+     *  填写错误
+     */
     ReturnCodeError = 1,
-    //  多次填写错误
-    ReturnCodeMoreTimeError
+    /**
+     *  多次填写错误
+     */
+    ReturnCodeMoreTimeError = 2
 };
 
-//  客户端回调方法
+/**
+ *  客户端回调方法
+ *
+ *  @param InvestCallBackMethod 回调的相关业务
+ *  @param ReturnCode           相关业务处理状态
+ *  @param NSString             相关业务处理说明
+ *  @param id                   云账户返回参数
+ */
 typedef void(^InvestCallBackBlock)(InvestCallBackMethod, ReturnCode, NSString*, id);
+
 
 static inline UIColor * ht_hexColor(uint color)
 {

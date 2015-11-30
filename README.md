@@ -76,18 +76,20 @@ typedef NS_ENUM(NSInteger, ReturnCode) {
 typedef void(^InvestCallBackBlock)(InvestCallBackMethod method, ReturnCode code, NSString*msg, id obj);
 
 ```
+
 #### HTWebViewController
-- @Description `加载网页， 添加消息头参，显示加载进度，加载视图，加载错误视图`
+- @Description `加载网页， 添加消息头参，显示加载进度，加载视图，加载错误视图` 
 
 - url  `请求的url链接`
 
 - webView `网页视图`
 
--  callBackBlock `云账户回调Block`
+
 
 #### HTInvestWebViewController 
 - @Description `继承自HTWebViewController ，控制网页返回， 显示关闭按钮, 分析客户端回调函数，接入客户端直接使用此控制器，打开相关业务链接即可。`
 
+-  callBackBlock `云账户回调Block`
 
 > Powered by [Mr.Yang](https://github.com/youran1024) Copy right  @**[云账户](https://www.yunzhanghu.com/)**
 

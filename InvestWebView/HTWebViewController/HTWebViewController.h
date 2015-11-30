@@ -14,7 +14,6 @@
  *
  *  @Description: 如需控制NavigationController是否允许pop ViewController 只需在Controller里遵守此协议
  */
-
 @protocol NavigationBarShouldPopItemProtocol <NSObject>
 
 /**
@@ -27,19 +26,30 @@
 @end
 
 
-
+/**
+ *  网页视图，处理加载进度
+ */
 @interface HTWebView : UIWebView
 
 
 @end
 
 
+/**
+ *  加载网页， 添加消息头参，显示加载进度，加载视图，加载错误视图
+ *  @Param url 请求的URL链接
+ *  @Param webView 网页视图
+ */
 @interface HTWebViewController : UIViewController <UIWebViewDelegate>
 
 /**
  *  请求的URL链接
  */
 @property (nonatomic, strong)               NSURL *url;
+
+/**
+ *  网页视图
+ */
 @property (nonatomic, strong, readonly)     HTWebView *webView;
 
 /**
