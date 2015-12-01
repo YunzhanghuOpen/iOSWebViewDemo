@@ -1,9 +1,11 @@
 
 ![yun](https://www.yunzhanghu.com/img/logo.png)
 
-# iOS接入端说明
 
-## 接入步骤
+
+### iOS SDK说明
+
+#### 接入步骤
 1. 将SDK引入工程
 2. Push `HTInvestWebViewController`之前，设置`HTInvestWebViewController`的各项参数
 	
@@ -13,7 +15,7 @@
 	
 3. 配置WebViewConfig里边的相关参数,统一页面样式
 
-#### - WebViewConfig
+#### WebViewConfig
 - @Description `配置系统色调，相关字体的颜色`
 
 
@@ -93,5 +95,3 @@ typedef void(^InvestCallBackBlock)(InvestCallBackMethod method, ReturnCode code,
 
 > Powered by [Mr.Yang](https://github.com/youran1024) Copy right  @**[云账户](https://www.yunzhanghu.com/)**
 
-
-[^MrYang]: hi ^-^

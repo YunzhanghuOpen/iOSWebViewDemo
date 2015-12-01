@@ -11,8 +11,111 @@
 #import "HTWebViewController.h"
 
 
+@protocol HTURLHookProtocol <NSObject>
 
-@interface HTInvestWebViewController () <UIWebViewDelegate>
+@required
+- (void)ht_urlHookWithRequest:(NSURLRequest *)request;
+- (BOOL)ht_isImplementCallBackBlock;
+
+@end
+
+#pragma mark -
+#pragma mark HTURLProtocol
+
+static NSString *hookString = nil;
+static id <HTURLHookProtocol> hookDelegate = nil;
+
+
+@interface HTURLProtocol : NSURLProtocol
+
+@property (nonatomic, copy)void(^hookBlock)(void);
+
++ (void)hookWithString:(NSString *)string andDelegate:(id<HTURLHookProtocol>)delegate;
+
++ (void)unHook;
+
+@end
+
+@implementation HTURLProtocol
+
++ (void)urlHook
+{
+    [NSURLProtocol registerClass:[HTURLProtocol class]];
+}
+
++ (void)unHook
+{
+    hookString = nil;
+    hookDelegate = nil;
+    
+    [NSURLProtocol unregisterClass:[HTURLProtocol class]];
+}
+
++ (void)hookWithString:(NSString *)string andDelegate:(id<HTURLHookProtocol>)delegate
+{
+    [self urlHook];
+    
+    hookDelegate = delegate;
+    hookString = string;
+}
+
++ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
+{
+    return request;
+}
+
++ (BOOL)canInitWithRequest:(NSURLRequest *)request
+{
+    NSString *host = request.URL.description;
+    if ([host rangeOfString:hookString].location != NSNotFound) {
+        if (DEBUG) {
+            NSLog(@"%@", request.URL);
+        }
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)startLoading
+{
+    if (hookDelegate) {
+        [hookDelegate ht_urlHookWithRequest:self.request];
+    }
+    
+    if (hookDelegate) {
+        if ([hookDelegate ht_isImplementCallBackBlock]) {
+            [self sendResponse];
+        }
+    }
+}
+
+- (void)sendResponse
+{
+    NSData *data = [@"app" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL
+                                                              statusCode:200
+                                                             HTTPVersion:@"HTTP/1.1"
+                                                            headerFields:nil];
+    
+    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    [self.client URLProtocol:self didLoadData:data];
+    [self.client URLProtocolDidFinishLoading:self];
+}
+
+- (void)stopLoading
+{
+    
+}
+
+@end
+
+
+#pragma mark - HTInvestWebViewController
+
+@interface HTInvestWebViewController () <UIWebViewDelegate, HTURLHookProtocol>
 {
     /*--------监控对方的设置状态------------*/
     
@@ -25,6 +128,18 @@
 
 
 @implementation HTInvestWebViewController
+
+- (void)dealloc
+{
+    [HTURLProtocol unHook];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [HTURLProtocol hookWithString:ht_urlHookStr andDelegate:self];
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -55,8 +170,17 @@
     [super viewDidLoad];
     
     [self addCloseBarbutton];
- 
-    self.hookString = ht_urlHookStr;
+
+}
+
+- (void)ht_urlHookWithRequest:(NSURLRequest *)request
+{
+    [self handleUserHttpRequest:request];
+}
+
+- (BOOL)ht_isImplementCallBackBlock
+{
+    return _callBackBlock ? YES : NO;
 }
 
 - (void)addCloseBarbutton
@@ -132,9 +256,16 @@
         
         NSString *returnMsg = [param objectForKey:@"msg"];
         NSString *data = [param objectForKey:@"data"];
-        NSError *error = nil;
-        id obj = [NSJSONSerialization JSONObjectWithData:[data dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:&error];
+        /*
+        NSAssert(data != nil, @"参数Data为空");
+         */
         
+        id obj = nil;
+        
+        if (data != nil) {
+            obj = [NSJSONSerialization JSONObjectWithData:[data dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
+        }
+
         if (_callBackBlock) {
             _callBackBlock(method, code, returnMsg, obj);
         }
@@ -145,7 +276,7 @@
  // 暂且搁置
  - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
  {
- return [self handleUserRequest:request];
+    return [self handleUserRequest:request];
  }
  */
 

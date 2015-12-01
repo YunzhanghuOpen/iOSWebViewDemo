@@ -181,90 +181,10 @@
 }
 
 @end
-
-@protocol HTURLHookProtocol <NSObject>
-
-- (void)ht_urlHookWithRequest:(NSURLRequest *)request;
-
-@end
-
-#pragma mark - 
-#pragma mark HTURLProtocol
-
-static NSString *hookString = nil;
-static id <HTURLHookProtocol> hookDelegate = nil;
-
-@interface HTURLProtocol : NSURLProtocol
-
-@property (nonatomic, copy)void(^hookBlock)(void);
-
-+ (void)hookWithString:(NSString *)string andDelegate:(id<HTURLHookProtocol>)delegate;
-
-+ (void)unHook;
-
-@end
-
-@implementation HTURLProtocol
-
-+ (void)urlHook
-{
-    [NSURLProtocol registerClass:[HTURLProtocol class]];
-}
-
-+ (void)unHook
-{
-    hookString = nil;
-    hookDelegate = nil;
-    
-    [NSURLProtocol unregisterClass:[HTURLProtocol class]];
-}
-
-+ (void)hookWithString:(NSString *)string andDelegate:(id<HTURLHookProtocol>)delegate
-{
-    [self urlHook];
-    
-    hookDelegate = delegate;
-    hookString = string;
-}
-
-+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
-{
-    return request;
-}
-
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request
-{
-    NSLog(@"%@", request.URL);
-    
-    NSString *host = request.URL.description;
-    if ([host rangeOfString:hookString].length > 0) {
-        
-        if (hookDelegate && [hookDelegate respondsToSelector:@selector(ht_urlHookWithRequest:)]) {
-            [hookDelegate ht_urlHookWithRequest:request];
-        }
-        
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (void)startLoading
-{
-    
-}
-
-- (void)stopLoading
-{
-    
-}
-
-@end
-
 #pragma mark -
 #pragma mark HTWebViewController
 
-@interface HTWebViewController () <HTWebViewDelegate, HTURLHookProtocol>
+@interface HTWebViewController () <HTWebViewDelegate>
 {
     BOOL _loadError;
 }
@@ -278,11 +198,6 @@ static id <HTURLHookProtocol> hookDelegate = nil;
 
 @implementation HTWebViewController
 
-- (void)dealloc
-{
-    [HTURLProtocol unHook];
-}
-
 
 - (void)viewDidLoad
 {
@@ -292,16 +207,6 @@ static id <HTURLHookProtocol> hookDelegate = nil;
      *  NavigationBar 处理操作
      */
     
-}
-
-//  Hook 到urlRequest
-- (void)setHookString:(NSString *)hookString
-{
-    if (![_hookString isEqualToString:hookString]) {
-        _hookString = hookString;
-        [HTURLProtocol hookWithString:_hookString andDelegate:self];
-    }
-
 }
 
 #pragma mark - ht_URLHook

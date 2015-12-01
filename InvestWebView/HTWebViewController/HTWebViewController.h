@@ -58,7 +58,7 @@
 @property (nonatomic, copy)                 NSString *hookString;
 
 /**
- *  AjaxRequest Callback
+ *  Request Callback
  *  服务器关于客户端的回调函数,需要子类重写,用来监听父类回调
  *  @param request
  */
