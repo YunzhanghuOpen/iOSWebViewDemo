@@ -3,19 +3,25 @@
 
 
 
-### iOS SDK说明
+#iOSWebViewDemo
 
-#### 接入步骤
+
+## 使用·
 1. 将SDK引入工程
 2. Push `HTInvestWebViewController`之前，设置`HTInvestWebViewController`的各项参数
 	
-	2.1 设置要打开的url
+	2.1 设置要打开的url （url 需要向服务端（非云账户服务端）请求）.
 	
 	2.2 设置回调Block
 	
 3. 配置WebViewConfig里边的相关参数,统一页面样式
 
-#### WebViewConfig
+## 引入
+将iOSWebViewSDK 文件夹导入到工程即可
+
+## SDK类介绍
+
+### WebViewConfig
 - @Description `配置系统色调，相关字体的颜色`
 
 
