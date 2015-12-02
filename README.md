@@ -6,7 +6,7 @@
 #iOSWebViewDemo
 
 
-## 使用·
+## 使用
 1. 将SDK引入工程
 2. Push `HTInvestWebViewController`之前，设置`HTInvestWebViewController`的各项参数
 	
@@ -18,6 +18,8 @@
 
 ## 引入
 将iOSWebViewSDK 文件夹导入到工程即可
+
+
 
 ## SDK类介绍
 
