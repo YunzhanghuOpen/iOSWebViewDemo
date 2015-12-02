@@ -10,7 +10,7 @@
 #import "HTInvestWebViewController.h"
 #import "WebViewConfig.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -19,56 +19,98 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)) style:UITableViewStylePlain];
+    [self.view addSubview:tableView];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self addInvsetButton];
-    
-    UIBarButtonItem *returnButtonItem = [[UIBarButtonItem alloc] init];
-    returnButtonItem.title = @"返回";
-    self.navigationItem.backBarButtonItem = returnButtonItem;
-
-    
-    
 }
 
-- (void)addInvsetButton
+#pragma mark - 
+#pragma mark TableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    UIButton *investButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [investButton setTitle:@"投资" forState:UIControlStateNormal];
-    investButton.frame = CGRectMake(0, 0, 100, 100);
-    investButton.center = self.view.center;
-    [investButton addTarget:self action:@selector(invesetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:investButton];
+    return 5;
 }
 
-- (void)invesetButtonClicked
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [UITableViewCell new];
+    cell.textLabel.text = [self titles][indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     HTInvestWebViewController *invest = [[HTInvestWebViewController alloc] init];
     
-//    [invest setCallBackBlock:^(InvestCallBackMethod method, ReturnCode code, NSString* returnMsg, id obj) {
-//        
-//        if (method == InvestCallBackMethodAuth) {
-//            self.view.backgroundColor = [UIColor redColor];
-//        }else {
-//            self.view.backgroundColor = [UIColor blueColor];
-//        }
-//        
-//    }];
+    [invest setCallBackBlock:^(InvestCallBackMethod method, ReturnCode code, NSString* returnMsg, id obj) {
+        
+        /**
+         *  错误情况处理
+         */
+        if (code == ReturnCodeMoreTimeError) {
+            //  用户多次输入错误，强制退出
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            return;
+            
+        }else if (code == ReturnCodeError) {
+            //  用户输入错误
+            
+            return;
+        }
+        
+        /**
+         *  流程回调处理
+         */
+        if (method == InvestCallBackMethodAuth) {
+            //  认证真实姓名
+            
+        }else if (method == InvestCallBackMethodBindBankCard){
+            //  绑定银行卡
+            
+        }else if (method == InvestCallBackMethodInvest) {
+            //  投资流程
+        
+        }else {
+            // 处理未知情况
+        
+        }
+        
+    }];
     
-    //123
-    invest.url = [NSURL URLWithString:@"https://test.yunzhanghu.com/#/app/logout"];
-    invest.url = [NSURL URLWithString:@"https://test.yunzhanghu.com"];
+#warning 请知晓
+    /**
+     *  实际开发过程中，需要在用户进入云账户前，需要向服务端（非云账户服务端）请求包含签名的URL链接
+     */
     
-//    invest.url = [NSURL URLWithString:@"http://10.10.1.116:8000"];
-//    invest.url = nil;
-    
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"html"];
-    NSString *fileStr = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
-//    [invest.webView loadHTMLString:fileStr baseURL:[NSURL fileURLWithPath:file]];
-
+    NSString *url = [self urls][0];
+    invest.url = [NSURL URLWithString:url];
     
     [self.navigationController pushViewController:invest animated:YES];
+}
+
+- (NSArray *)titles
+{
+    return @[@"实名认证流程", @"绑卡流程", @"绑卡未实名流程", @"投资未绑卡未实名流程", @"常规流程"];
+}
+
+- (NSArray *)urls
+{
+    return @[@"https://test.yunzhanghu.com",
+             @"",
+             @"",
+             @"",
+             @""];
 }
 
 - (NSString *)title

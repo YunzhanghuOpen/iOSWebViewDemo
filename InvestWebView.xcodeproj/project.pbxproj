@@ -12,9 +12,8 @@
 		9237DB961C030E9700C79DE0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9237DB951C030E9700C79DE0 /* ViewController.m */; };
 		9237DB9B1C030E9700C79DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9237DB9A1C030E9700C79DE0 /* Assets.xcassets */; };
 		9237DB9E1C030E9700C79DE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9237DB9C1C030E9700C79DE0 /* LaunchScreen.storyboard */; };
-		9237DBA81C030F8900C79DE0 /* HTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9237DBA71C030F8900C79DE0 /* HTWebViewController.m */; };
-		9237DBAB1C030FD300C79DE0 /* HTInvestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9237DBAA1C030FD300C79DE0 /* HTInvestWebViewController.m */; };
-		92CEF97B1C06F11400AD9D83 /* 123.html in Resources */ = {isa = PBXBuildFile; fileRef = 92CEF97A1C06F11400AD9D83 /* 123.html */; };
+		928BB9A91C0ED5B30056E99A /* HTInvestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928BB9A41C0ED5B30056E99A /* HTInvestWebViewController.m */; };
+		928BB9AA1C0ED5B30056E99A /* HTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928BB9A71C0ED5B30056E99A /* HTWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +26,11 @@
 		9237DB9A1C030E9700C79DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9237DB9D1C030E9700C79DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9237DB9F1C030E9700C79DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9237DBA61C030F8900C79DE0 /* HTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWebViewController.h; sourceTree = "<group>"; };
-		9237DBA71C030F8900C79DE0 /* HTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWebViewController.m; sourceTree = "<group>"; };
-		9237DBA91C030FD300C79DE0 /* HTInvestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTInvestWebViewController.h; sourceTree = "<group>"; };
-		9237DBAA1C030FD300C79DE0 /* HTInvestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTInvestWebViewController.m; sourceTree = "<group>"; };
-		9237DBAC1C033DE600C79DE0 /* WebViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewConfig.h; sourceTree = "<group>"; };
-		92CEF97A1C06F11400AD9D83 /* 123.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 123.html; sourceTree = "<group>"; };
+		928BB9A31C0ED5B30056E99A /* HTInvestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTInvestWebViewController.h; sourceTree = "<group>"; };
+		928BB9A41C0ED5B30056E99A /* HTInvestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTInvestWebViewController.m; sourceTree = "<group>"; };
+		928BB9A61C0ED5B30056E99A /* HTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWebViewController.h; sourceTree = "<group>"; };
+		928BB9A71C0ED5B30056E99A /* HTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWebViewController.m; sourceTree = "<group>"; };
+		928BB9A81C0ED5B30056E99A /* WebViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +47,6 @@
 		9237DB821C030E9700C79DE0 = {
 			isa = PBXGroup;
 			children = (
-				92CEF97A1C06F11400AD9D83 /* 123.html */,
 				9237DB8D1C030E9700C79DE0 /* InvestWebView */,
 				9237DB8C1C030E9700C79DE0 /* Products */,
 			);
@@ -66,14 +63,11 @@
 		9237DB8D1C030E9700C79DE0 /* InvestWebView */ = {
 			isa = PBXGroup;
 			children = (
-				9237DBAC1C033DE600C79DE0 /* WebViewConfig.h */,
-				9237DBA51C030F8900C79DE0 /* HTWebViewController */,
 				9237DB911C030E9700C79DE0 /* AppDelegate.h */,
 				9237DB921C030E9700C79DE0 /* AppDelegate.m */,
 				9237DB941C030E9700C79DE0 /* ViewController.h */,
 				9237DB951C030E9700C79DE0 /* ViewController.m */,
-				9237DBA91C030FD300C79DE0 /* HTInvestWebViewController.h */,
-				9237DBAA1C030FD300C79DE0 /* HTInvestWebViewController.m */,
+				928BB9A21C0ED5B30056E99A /* iOSWebViewSDK */,
 				9237DB9A1C030E9700C79DE0 /* Assets.xcassets */,
 				9237DB9C1C030E9700C79DE0 /* LaunchScreen.storyboard */,
 				9237DB9F1C030E9700C79DE0 /* Info.plist */,
@@ -90,11 +84,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9237DBA51C030F8900C79DE0 /* HTWebViewController */ = {
+		928BB9A21C0ED5B30056E99A /* iOSWebViewSDK */ = {
 			isa = PBXGroup;
 			children = (
-				9237DBA61C030F8900C79DE0 /* HTWebViewController.h */,
-				9237DBA71C030F8900C79DE0 /* HTWebViewController.m */,
+				928BB9A81C0ED5B30056E99A /* WebViewConfig.h */,
+				928BB9A31C0ED5B30056E99A /* HTInvestWebViewController.h */,
+				928BB9A41C0ED5B30056E99A /* HTInvestWebViewController.m */,
+				928BB9A51C0ED5B30056E99A /* HTWebViewController */,
+			);
+			path = iOSWebViewSDK;
+			sourceTree = "<group>";
+		};
+		928BB9A51C0ED5B30056E99A /* HTWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				928BB9A61C0ED5B30056E99A /* HTWebViewController.h */,
+				928BB9A71C0ED5B30056E99A /* HTWebViewController.m */,
 			);
 			path = HTWebViewController;
 			sourceTree = "<group>";
@@ -157,7 +162,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92CEF97B1C06F11400AD9D83 /* 123.html in Resources */,
 				9237DB9E1C030E9700C79DE0 /* LaunchScreen.storyboard in Resources */,
 				9237DB9B1C030E9700C79DE0 /* Assets.xcassets in Resources */,
 			);
@@ -170,10 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9237DBAB1C030FD300C79DE0 /* HTInvestWebViewController.m in Sources */,
+				928BB9A91C0ED5B30056E99A /* HTInvestWebViewController.m in Sources */,
 				9237DB961C030E9700C79DE0 /* ViewController.m in Sources */,
-				9237DBA81C030F8900C79DE0 /* HTWebViewController.m in Sources */,
 				9237DB931C030E9700C79DE0 /* AppDelegate.m in Sources */,
+				928BB9AA1C0ED5B30056E99A /* HTWebViewController.m in Sources */,
 				9237DB901C030E9700C79DE0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

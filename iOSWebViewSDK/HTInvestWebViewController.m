@@ -256,6 +256,7 @@ static id <HTURLHookProtocol> hookDelegate = nil;
         
         NSString *returnMsg = [param objectForKey:@"msg"];
         NSString *data = [param objectForKey:@"data"];
+        data = [self decodeString:data];
         /*
         NSAssert(data != nil, @"参数Data为空");
          */
@@ -341,6 +342,18 @@ static id <HTURLHookProtocol> hookDelegate = nil;
 - (NSString *)title
 {
     return defaultString_investTitle;
+}
+
+#pragma mark - 
+#pragma mark URLDecoding
+
+-(NSString *)decodeString:(NSString*)encodedString{
+    
+    NSString *decodedString  = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,
+                                                                                                                     (__bridge CFStringRef)encodedString,
+                                                                                                                     CFSTR(""),
+                                                                                                                     CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    return decodedString;
 }
 
 @end
