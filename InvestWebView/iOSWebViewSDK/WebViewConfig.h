@@ -50,7 +50,7 @@ static NSString *defaultString_investTitle = @"云账户";
 #pragma mark Extension
 
 /*url劫持关键字*/
-static NSString *ht_urlHookStr      = @"yunzhanghu.com/app";
+static NSString *ht_urlHookStr         = @"yunzhanghu.com/app";
 
 /*认证回调*/
 static NSString *ht_authAction         =   @"returnAuth";
@@ -61,6 +61,8 @@ static NSString *ht_bindBankCardAction =   @"returnBankcard";
 /*投资回调*/
 static NSString *ht_investAction       =   @"returnInvest";
 
+/*关闭窗口*/
+static NSString *ht_intvestClose       =   @"closeWindow";
 
 /**
  *  回调方法枚举

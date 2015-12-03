@@ -219,7 +219,7 @@
 //  TODO: rewrite in subClass
 - (void)userActionCallBackWithRequest:(NSURLRequest *)request
 {
-
+    
 }
 
 - (void)setUrl:(NSURL *)url

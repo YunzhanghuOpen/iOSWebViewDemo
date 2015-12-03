@@ -240,6 +240,12 @@ static id <HTURLHookProtocol> hookDelegate = nil;
             method = InvestCallBackMethodAuth;
         }else if ([userAction isEqualToString:ht_bindBankCardAction]) {
             method = InvestCallBackMethodBindBankCard;
+        }else if ([userAction isEqualToString:ht_intvestClose]) {
+            /**
+             *  关闭浏览器
+             */
+            [self closeWebviewController];
+            return;
         }
         
         NSDictionary *param = [self urlParamterFromRequestURL:urlString];
@@ -274,7 +280,6 @@ static id <HTURLHookProtocol> hookDelegate = nil;
     }
 }
 
-
 - (NSDictionary *)urlParamterFromRequestURL:(NSString *)urlStr
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -299,6 +304,14 @@ static id <HTURLHookProtocol> hookDelegate = nil;
     }
     
     return nil;
+}
+
+#pragma mark - 
+#pragma mark CloseWindow
+
+- (void)closeWebviewController
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSString *)title
