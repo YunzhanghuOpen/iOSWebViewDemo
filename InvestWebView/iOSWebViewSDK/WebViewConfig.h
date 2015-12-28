@@ -125,4 +125,15 @@ static inline UIColor * ht_hexColor(uint color)
 }
 
 
+#if !defined(DEBUG) || DEBUG == 0
+
+#define HTLog(fmt, ...)
+
+#elif DEBUG == 1
+
+#define HTLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#endif
+
+
 #endif /* WebViewConfig_h */

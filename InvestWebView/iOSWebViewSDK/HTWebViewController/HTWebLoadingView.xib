@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HTWebLoadingView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在进入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZv-Yu-TC1" userLabel="title">
+                    <rect key="frame" x="270" y="287" width="60" height="18"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="理财服务由云账户提供" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGz-C5-Sfv" userLabel="sub title">
+                    <rect key="frame" x="225" y="320" width="150" height="18"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cft-xv-QHl" userLabel="backimage">
+                    <rect key="frame" x="262" y="215" width="77" height="57"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="77" id="0Kp-qE-a4r"/>
+                        <constraint firstAttribute="height" constant="57" id="QK2-XX-fUu"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RMO-Ih-TaH" userLabel="animate">
+                    <rect key="frame" x="262" y="215" width="77" height="57"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Cft-xv-QHl" firstAttribute="width" secondItem="RMO-Ih-TaH" secondAttribute="width" id="8uo-Dj-Cci"/>
+                <constraint firstItem="QZv-Yu-TC1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9Vu-CP-fzs"/>
+                <constraint firstItem="QZv-Yu-TC1" firstAttribute="top" secondItem="RMO-Ih-TaH" secondAttribute="bottom" constant="15" id="ABf-uO-UI0"/>
+                <constraint firstItem="CGz-C5-Sfv" firstAttribute="top" secondItem="QZv-Yu-TC1" secondAttribute="bottom" constant="15" id="KBf-Vp-8Eu"/>
+                <constraint firstItem="Cft-xv-QHl" firstAttribute="height" secondItem="RMO-Ih-TaH" secondAttribute="height" id="aZO-tS-1wc"/>
+                <constraint firstItem="Cft-xv-QHl" firstAttribute="top" secondItem="RMO-Ih-TaH" secondAttribute="top" id="q6w-f2-zbi"/>
+                <constraint firstItem="Cft-xv-QHl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-57" id="wtz-R3-XNs"/>
+                <constraint firstItem="Cft-xv-QHl" firstAttribute="leading" secondItem="RMO-Ih-TaH" secondAttribute="leading" id="xgy-5W-par"/>
+                <constraint firstItem="CGz-C5-Sfv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yIa-jS-jAS"/>
+                <constraint firstItem="Cft-xv-QHl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yt5-nn-e7V"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="animateImageView" destination="RMO-Ih-TaH" id="cY8-vK-pZs"/>
+                <outlet property="backImageView" destination="Cft-xv-QHl" id="OMG-yj-43x"/>
+                <outlet property="subTitleLabel" destination="CGz-C5-Sfv" id="4fY-yc-pNh"/>
+                <outlet property="titleLabel" destination="QZv-Yu-TC1" id="uB3-qG-aIy"/>
+            </connections>
+            <point key="canvasLocation" x="478" y="370"/>
+        </view>
+    </objects>
+</document>

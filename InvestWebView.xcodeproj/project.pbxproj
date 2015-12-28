@@ -14,6 +14,9 @@
 		9237DB9E1C030E9700C79DE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9237DB9C1C030E9700C79DE0 /* LaunchScreen.storyboard */; };
 		928BB9A91C0ED5B30056E99A /* HTInvestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928BB9A41C0ED5B30056E99A /* HTInvestWebViewController.m */; };
 		928BB9AA1C0ED5B30056E99A /* HTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928BB9A71C0ED5B30056E99A /* HTWebViewController.m */; };
+		92A2566E1C31221E003F3145 /* HTWebLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A2566D1C31221E003F3145 /* HTWebLoadingView.m */; };
+		92A256701C312256003F3145 /* HTWebLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92A2566F1C312256003F3145 /* HTWebLoadingView.xib */; };
+		92A256721C312497003F3145 /* Sources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 92A256711C312497003F3145 /* Sources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,10 @@
 		928BB9A61C0ED5B30056E99A /* HTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWebViewController.h; sourceTree = "<group>"; };
 		928BB9A71C0ED5B30056E99A /* HTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWebViewController.m; sourceTree = "<group>"; };
 		928BB9A81C0ED5B30056E99A /* WebViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewConfig.h; sourceTree = "<group>"; };
+		92A2566C1C31221E003F3145 /* HTWebLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWebLoadingView.h; sourceTree = "<group>"; };
+		92A2566D1C31221E003F3145 /* HTWebLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWebLoadingView.m; sourceTree = "<group>"; };
+		92A2566F1C312256003F3145 /* HTWebLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTWebLoadingView.xib; sourceTree = "<group>"; };
+		92A256711C312497003F3145 /* Sources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Sources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +105,10 @@
 		928BB9A51C0ED5B30056E99A /* HTWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				92A256711C312497003F3145 /* Sources.bundle */,
+				92A2566C1C31221E003F3145 /* HTWebLoadingView.h */,
+				92A2566D1C31221E003F3145 /* HTWebLoadingView.m */,
+				92A2566F1C312256003F3145 /* HTWebLoadingView.xib */,
 				928BB9A61C0ED5B30056E99A /* HTWebViewController.h */,
 				928BB9A71C0ED5B30056E99A /* HTWebViewController.m */,
 			);
@@ -163,6 +174,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9237DB9E1C030E9700C79DE0 /* LaunchScreen.storyboard in Resources */,
+				92A256701C312256003F3145 /* HTWebLoadingView.xib in Resources */,
+				92A256721C312497003F3145 /* Sources.bundle in Resources */,
 				9237DB9B1C030E9700C79DE0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A2566E1C31221E003F3145 /* HTWebLoadingView.m in Sources */,
 				928BB9A91C0ED5B30056E99A /* HTInvestWebViewController.m in Sources */,
 				9237DB961C030E9700C79DE0 /* ViewController.m in Sources */,
 				9237DB931C030E9700C79DE0 /* AppDelegate.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "HTWebViewController.h"
 #import "WebViewConfig.h"
-
+#import "HTWebLoadingView.h"
 
 #pragma mark -
 #pragma mark ExtensionMethod
@@ -192,6 +192,8 @@
 @property (nonatomic, assign)   BOOL loadData;
 @property (nonatomic, strong)   HTWebProgressView *progressView;
 @property (nonatomic, strong)   NSMutableDictionary *headerDic;
+@property (nonatomic, strong)   HTWebLoadingView *loadingView;
+@property (nonatomic, assign)   NSTimeInterval beginTime;
 
 @end
 
@@ -235,6 +237,16 @@
     [self refresh:_url];
 }
 
+- (HTWebLoadingView *)loadingView
+{
+    if (!_loadingView) {
+        _loadingView = [[[NSBundle mainBundle] loadNibNamed:@"HTWebLoadingView" owner:self options:nil] lastObject];
+        _loadingView.frame = self.view.bounds;
+    }
+    
+    return _loadingView;
+}
+
 - (void)refresh:(NSURL *)url
 {
     if (!url.absoluteString || url.absoluteString.length == 0) {
@@ -273,6 +285,9 @@
         urlRequest.allHTTPHeaderFields = [self addRequestHeader:urlRequest.allHTTPHeaderFields];
         [_webView loadRequest:urlRequest];
     }
+    
+    _beginTime = [NSDate timeIntervalSinceReferenceDate];
+    [self.view addSubview:self.loadingView];
 }
 
 - (void)setHeaderObject:(id)anObject forKey:(id)aKey
@@ -309,6 +324,25 @@
     
     if (persent >= 1.0f) {
         _progressView.hidden = YES;
+        
+        if (_loadingView) {
+            
+            NSTimeInterval endTime = [NSDate timeIntervalSinceReferenceDate];
+            CGFloat duration = endTime - _beginTime;
+            HTLog(@"loadingTime%lf", duration);
+            if (duration < 2) {
+                sleep(1);
+            }
+            
+            HTLog(@"sleepTime:%lf", [NSDate timeIntervalSinceReferenceDate] - endTime);
+            
+            [UIView animateWithDuration:.25 animations:^{
+                _loadingView.alpha = 0;
+            } completion:^(BOOL finished) {
+                [_loadingView removeFromSuperview];
+                _loadingView = nil;
+            }];
+        }
     }
 }
 
@@ -316,6 +350,8 @@
 {
     _loadError = YES;
     _progressView.hidden = YES;
+    
+    [self.loadingView removeFromSuperview];
     
 //    [self showLoadingViewWithState:LoadingStateNetworkError];
 }

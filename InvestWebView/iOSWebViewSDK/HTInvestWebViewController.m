@@ -68,9 +68,7 @@ static id <HTURLHookProtocol> hookDelegate = nil;
 {
     NSString *host = request.URL.description;
     if ([host rangeOfString:hookString].location != NSNotFound) {
-        if (DEBUG) {
-            NSLog(@"%@", request.URL);
-        }
+        HTLog(@"%@", request.URL);
         
         return YES;
     }
